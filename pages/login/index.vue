@@ -12,7 +12,9 @@
       <div>
         <button type="submit">Submit</button>
       </div>
+
     </form>
+    <button @click="googleAuth">Google</button>
   </div>
 </template>
 
@@ -34,6 +36,16 @@ export default {
         const response = await this.$auth.loginWith('local', {
           data: this.login
         })
+        console.log(response);
+        this.$router.push('/');
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    async googleAuth() {
+      try {
+        const response = await this.$auth.loginWith('google')
         console.log(response);
         this.$router.push('/');
       } catch (err) {

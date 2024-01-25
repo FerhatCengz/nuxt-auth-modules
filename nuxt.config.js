@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 export default {
+  mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-auth-modules',
@@ -51,6 +52,12 @@ export default {
           logout: {url: '/api/auth/logout', method: 'post'},
           user: {url: '/api/auth/user', method: 'post'},
         },
+      },
+      google: {
+        clientId: '68558145813-959436nlciqg26ir1jvmpnoindro62m4.apps.googleusercontent.com',
+        codeChallengeMethod: "",
+        responseType: "id_token token",
+
       },
     },
   },
