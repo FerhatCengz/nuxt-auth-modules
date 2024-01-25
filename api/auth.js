@@ -21,7 +21,10 @@ app.post('/login', (req, res) => {
 
   if (user) {
     // Başarılı giriş durumu
-    const token = jwt.sign(user, 'yourSecretKey', {expiresIn: '1m'});
+    const secretKey = '2d25c774bfd01c3e8ab232c13b82fb123bf5f62884d29219e9cba47cc309a317';
+    const token = jwt.sign(user, secretKey, {expiresIn: '1m'});
+
+    res.cookie('token', token, {httpOnly: true, secure: true});
 
     res.status(200).json({token, user});
   } else {
@@ -39,7 +42,7 @@ app.post('/logout', (req, res) => {
 // User endpoint'i
 app.post('/user', (req, res) => {
   // Token'dan kullanıcı bilgileri alınıp gönderilecek
-  res.status(200).json({user: {id: 1, username: 'ferhat'}});
+  res.status(200).json({user: {id: 1, username: 'ferhat', role: "admin"}});
 });
 
 module.exports = {
