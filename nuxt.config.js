@@ -49,12 +49,26 @@ export default {
         endpoints: {
           login: {url: '/api/auth/login', method: 'post'},
           logout: {url: '/api/auth/logout', method: 'post'},
-          user: {url: '/api/auth/user', method: 'get'},
+          user: {url: '/api/auth/user', method: 'post'},
         },
       },
     },
   },
-
+  /*Cookie :
+   auth: {
+      strategies: {
+        local: {
+          token: {
+            required: false,
+            type: false
+          },
+          endpoints: {
+            login: {url: '/api/auth/login', method: 'post'},
+          }
+        }
+      }
+    },
+  * */
   serverMiddleware: [
     bodyParser.json(),
     "~/api/auth"

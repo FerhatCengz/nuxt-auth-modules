@@ -1,6 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+import cookieParser from 'cookie-parser';
+
 const app = express();
+// app.use(cookieParser())
 
 // Sabit kullanıcı bilgileri
 const users = [
@@ -34,7 +37,7 @@ app.post('/logout', (req, res) => {
 });
 
 // User endpoint'i
-app.get('/user', (req, res) => {
+app.post('/user', (req, res) => {
   // Token'dan kullanıcı bilgileri alınıp gönderilecek
   res.status(200).json({user: {id: 1, username: 'ferhat'}});
 });
